@@ -1,0 +1,12 @@
+:root {
+  /* color */
+  --clr-blue: #6559c5;
+  --clr-purple: #a559bd;
+  --clr-green: #6fb555; /* for button */
+  --clr-green-l: rgba(111, 181, 85, 0.7); /* for button */
+  --clr-gray: #e6e6e6; /* for input background color */
+}
+
+* {
+  font-family: "Poppins", sans-serif !important;
+}
