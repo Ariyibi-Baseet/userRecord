@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import RegisterView from "../views/RegisterView.vue";
-// import LoginView from "../views/LoginView.vue";
 
 const routes = [
   {
@@ -8,15 +7,15 @@ const routes = [
     name: "home",
     component: RegisterView,
   },
-  // {
-  //   path: "/login",
-  //   name: "login",
-  //   component: LoginView,
-  // },
   {
     path: "/login",
     name: "login",
     component: () => import("../views/LoginView.vue"),
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: () => import("../views/HomeView.vue"),
   },
 ];
 
