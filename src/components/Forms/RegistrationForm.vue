@@ -34,10 +34,12 @@
 <script>
 import { useToast } from "vue-toastification";
 import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
 export default {
   name: "RegistrationForm",
   setup() {
     const toast = useToast();
+    const route = useRouter();
     const formData = ref({
       fname: "",
       email: "",
@@ -49,10 +51,14 @@ export default {
 
       if (formData.value.fname && formData.value.email && formData.value.pass) {
         toast.success("You can now proceed to Login Page", {
-          timeout: 4000,
+          timeout: 2000,
         });
+        // I will add a preloader in between before going to the next page
+        setTimeout(() => {
+          route.push("/login");
+        }, 2000);
       } else {
-        toast.warning("All filed must be filled", 2000);
+        toast.warning("All filed must be filled", { timeout: 2000 });
       }
     };
 

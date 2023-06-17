@@ -18,7 +18,7 @@
           </i>
         </div>
         <div class="logout-wrapper ms-3">
-          <button class="btn btn-danger">Logout</button>
+          <button class="btn btn-danger" @click="toHome">Logout</button>
         </div>
       </div>
     </div>
@@ -26,8 +26,23 @@
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+import { useToast } from "vue-toastification";
 export default {
   name: "NavBar",
+  setup() {
+    const route = useRouter();
+    const toast = useToast();
+
+    const toHome = () => {
+      toast.success("You are always Welcome", { timeout: 2000 });
+      setTimeout(() => {
+        route.push("/");
+      }, 2000);
+    };
+
+    return { toHome };
+  },
 };
 </script>
 
