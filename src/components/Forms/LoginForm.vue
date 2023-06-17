@@ -28,10 +28,12 @@
 <script>
 import { ref, watch } from "vue";
 import { useToast } from "vue-toastification";
+import { useRouter } from "vue-router";
 export default {
   name: "LoginForm",
   setup() {
     const toast = useToast();
+    const route = useRouter();
     const formData = ref({
       email: "",
       password: "",
@@ -41,7 +43,10 @@ export default {
     const submitForm = (e) => {
       e.preventDefault();
       if (formData.value.email && formData.value.password) {
-        toast.success("You can now proceed to Dashboard", 2000);
+        toast.success("You can now proceed to Dashboard", { timeout: 1000 });
+        setTimeout(() => {
+          route.push("/dashboard");
+        }, 2000);
       } else {
         toast.warning("All filed must be filled", 2000);
       }
@@ -52,7 +57,7 @@ export default {
       () => formData.value.email,
       (newEmail) => {
         if (newEmail == "") {
-          toast.error("Email Address Field cannot be null", 2000);
+          toast.error("Email Address Field cannot be null", { timeout: 2000 });
         }
       }
     );
@@ -61,7 +66,7 @@ export default {
       () => formData.value.password,
       (newPassword) => {
         if (newPassword == "") {
-          toast.error("Password Field cannot be null", 2000);
+          toast.error("Password Field cannot be null", { timeout: 2000 });
         }
       }
     );
