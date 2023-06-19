@@ -1,9 +1,9 @@
 <template>
-  <section class="login-section">
+  <section class="login-section px-2 py-sm-4">
     <div
       class="container min-vh-100 d-flex align-items-center justify-content-center"
     >
-      <div class="p-4 w-50 bg-white rounded-4 shadow-md">
+      <div class="p-4 bg-white col-12 col-lg-6 rounded-4 shadow-md">
         <h2 class="fs-4 text-center mb-2 login-text">
           You can now proceed!
           <ArrowIcon />
@@ -12,7 +12,9 @@
         <!-- form area -->
         <div class="container">
           <div class="row">
-            <div class="col d-flex align-items-center justify-content-center">
+            <div
+              class="col d-flex align-items-center justify-content-center d-none d-sm-flex"
+            >
               <img :src="loginIcon" alt="" class="w-75 h-75" />
             </div>
             <div class="col">
@@ -44,6 +46,7 @@ export default {
 <style scoped>
 .login-section {
   background-color: var(--clr-blue);
+  overflow: hidden;
 }
 .login-text {
   color: var(--clr-purple);
