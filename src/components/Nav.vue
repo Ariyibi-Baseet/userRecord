@@ -18,7 +18,7 @@
           </i>
         </div>
         <div class="logout-wrapper ms-3">
-          <button class="btn btn-danger" @click="toHome">Logout</button>
+          <button class="btn btn logout-btn" @click="toHome">Logout</button>
         </div>
       </div>
     </div>
@@ -56,6 +56,10 @@ export default {
 }
 .alert {
   left: 50%;
-  background-color: #e05466;
+  background-color: var(--clr-red);
+}
+.logout-btn {
+  background-color: var(--clr-red);
+  color: #fff;
 }
 </style>
