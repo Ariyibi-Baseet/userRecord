@@ -51,14 +51,19 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button
+          <!-- <button
             type="button"
             class="btn btn close-btn"
             data-bs-dismiss="modal"
           >
             Close
-          </button>
-          <button type="button" class="btn btn add-btn" @click="addNewUser">
+          </button> -->
+          <button
+            type="button"
+            class="btn btn add-btn"
+            @click="addNewUser"
+            data-bs-dismiss="modal"
+          >
             Add User
           </button>
         </div>
