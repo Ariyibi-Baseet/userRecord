@@ -12,6 +12,14 @@
             <div class="left d-flex align-items-center">
               <h5 class="fw-bold">Users</h5>
               <button
+                class="btn ms-3 pdf-btn"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-title="Tooltip on top"
+              >
+                PDF
+              </button>
+              <button
                 class="btn btn add-btn ms-3"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
@@ -33,6 +41,7 @@
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>
                   <th scope="col">City</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,6 +51,14 @@
                   <td>{{ user.name }}</td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.city }}</td>
+                  <td>
+                    <button class="btn delete-btn">
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                    <button class="btn edit-btn ms-2">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -70,7 +87,7 @@ export default {
     let Allusers = ref([]);
 
     const displayUsersData = (users) => {
-      Allusers.value = JSON.parse(JSON.stringify(users));
+      Allusers.value = JSON.parse(JSON.stringify(users.slice().reverse()));
     };
 
     return { displayUsersData, Allusers };
@@ -90,9 +107,25 @@ main {
   color: var(--clr-purple);
 }
 
+.pdf-btn,
+.pdf-btn:focus {
+  background-color: #f24446 !important;
+  color: #fff !important;
+}
 .add-btn,
 .add-btn:focus {
   background-color: var(--clr-green) !important;
+  color: #fff !important;
+}
+.edit-btn,
+.edit-btn:focus {
+  background-color: var(--clr-green) !important;
+  color: #fff !important;
+}
+
+.delete-btn,
+.delete-btn:focus {
+  background-color: var(--clr-red) !important;
   color: #fff !important;
 }
 </style>

@@ -53,12 +53,10 @@
         <div class="modal-footer">
           <button
             type="button"
-            class="btn btn close-btn"
+            class="btn btn add-btn"
+            @click="addNewUser"
             data-bs-dismiss="modal"
           >
-            Close
-          </button>
-          <button type="button" class="btn btn add-btn" @click="addNewUser">
             Add User
           </button>
         </div>
@@ -147,6 +145,7 @@ export default {
           }
         )
         .then((response) => {
+          // format JSON response with indentation
           // console.log("response here" + JSON.stringify(response.data, null, 2));
           let datas = JSON.parse(JSON.stringify(response.data));
           users.value = datas;
