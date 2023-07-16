@@ -2,7 +2,7 @@
   <!-- Dashboard section starts here -->
   <div class="min-vh-100 home-section">
     <!-- Navbar Area -->
-    <NavBar />
+    <NavBar :brand="navBrand" />
 
     <!-- Main Area -->
     <div class="container">
@@ -85,12 +85,13 @@ export default {
   },
   setup() {
     let Allusers = ref([]);
+    let navBrand = "User Records";
 
     const displayUsersData = (users) => {
-      Allusers.value = JSON.parse(JSON.stringify(users.slice().reverse()));
+      Allusers.value = JSON.parse(JSON.stringify(users));
     };
 
-    return { displayUsersData, Allusers };
+    return { displayUsersData, Allusers, navBrand };
   },
 };
 </script>
