@@ -2,7 +2,7 @@
   <nav class="p-2 w-100 bg-white shadow-md">
     <div class="container d-flex align-items-center justify-content-between">
       <!-- Brand -->
-      <h4 class="brand mt-2">User Records <i class="bi bi-table"></i></h4>
+      <h4 class="brand mt-2">{{ brand }} <i class="bi bi-table"></i></h4>
 
       <div class="d-flex align-items-center justify-content-center">
         <!-- notification 
@@ -30,15 +30,18 @@ import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 export default {
   name: "NavBar",
+  props: ["brand"],
   setup() {
     const route = useRouter();
     const toast = useToast();
 
     const toHome = () => {
-      toast.success("You are always Welcome", { timeout: 2000 });
-      setTimeout(() => {
-        route.push("/");
-      }, 2000);
+      if (confirm("Are you sure you wanna Logout?")) {
+        toast.success("You are always Welcome", { timeout: 2000 });
+        setTimeout(() => {
+          route.push("/");
+        }, 2000);
+      }
     };
 
     return { toHome };

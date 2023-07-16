@@ -1,4 +1,11 @@
 <template>
+  <audio
+    :src="audioPath"
+    controls
+    preload
+    ref="audioSuccess"
+    class="invisible"
+  ></audio>
   <div
     class="modal fade"
     id="staticBackdrop"
@@ -81,8 +88,8 @@ export default {
     });
     const users = ref([]);
     const vm = getCurrentInstance(); // get Vue instance
-
-    // modal
+    const audioPath = "/audio/notification_success.mp3";
+    const audioSuccess = ref(null);
 
     // Add new user to records
     const addNewUser = () => {
@@ -113,11 +120,13 @@ export default {
           .catch((error) => {
             console.log(error);
           });
+
         toast.success(`${formData.value.fname} Added Successfully!`, {
           timeout: 2000,
         });
-
-        // console.log(modalBox);
+        const audio = audioSuccess.value;
+        // play audio after record is added successfully
+        audio.play();
 
         // erase all data from the form
         formData.value.fname = "";
@@ -135,7 +144,7 @@ export default {
           process.env.VUE_APP_HARPERDB_INSTANCE,
           JSON.stringify({
             operation: "sql",
-            sql: "SELECT * FROM user_details.user",
+            sql: "SELECT * FROM user_details.user ORDER BY __createdtime__ DESC",
           }),
           {
             headers: {
@@ -156,7 +165,7 @@ export default {
         });
     });
 
-    return { formData, addNewUser, formModal };
+    return { formData, addNewUser, formModal, audioPath, audioSuccess };
   },
 };
 </script>
